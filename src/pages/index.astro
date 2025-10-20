@@ -1,11 +1,133 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import BenefitsSection from "../components/BenefitsSection.astro";
+import JourneySection from "../components/JourneySection.astro";
+import RoadSection from "../components/RoadSection.astro";
+import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-	<Welcome />
+  <div class="box">
+    <Header />
+  </div>
+  <div class="box">
+    <BenefitsSection />
+  </div>
+  <div class="box">
+    <JourneySection />
+  </div>
+  <div class="box">
+    <RoadSection />
+  </div>
+  <Footer />
 </Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  if (!prefersReducedMotion) {
+    const revealOnScroll = (
+      selector: string,
+      options: { start?: string; once?: boolean } = {},
+    ) => {
+      const elements = Array.from(document.querySelectorAll(selector));
+      elements.forEach((el) => {
+        gsap.set(el, { y: 28, autoAlpha: 0, willChange: "transform, opacity" });
+        gsap.to(el, {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.9,
+          ease: "power2.out",
+          overwrite: "auto",
+          scrollTrigger: {
+            trigger: el,
+            start: options.start || "top 85%",
+            once: options.once ?? true,
+          },
+        });
+      });
+    };
+
+    revealOnScroll(".header-content");
+    revealOnScroll(".benefits-section .benefits-section-title");
+    revealOnScroll(".journey-section-left");
+    revealOnScroll(".journey-section-right");
+    revealOnScroll(".road-section-content");
+
+    const benefitCardsContainer = document.querySelector(
+      ".benefit-cards-container",
+    );
+    if (benefitCardsContainer) {
+      const cards = benefitCardsContainer.querySelectorAll(".benefit-card");
+      if (cards.length) {
+        gsap.set(cards, {
+          y: 24,
+          autoAlpha: 0,
+          willChange: "transform, opacity",
+        });
+        gsap.to(cards, {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: benefitCardsContainer,
+            start: "top 80%",
+            once: true,
+          },
+        });
+      }
+    }
+
+    const numberedListContainer = document.querySelector(
+      ".numbered-list-container",
+    );
+    if (numberedListContainer) {
+      const items = numberedListContainer.children;
+      if (items.length) {
+        gsap.set(items, {
+          y: 20,
+          autoAlpha: 0,
+          willChange: "transform, opacity",
+        });
+        gsap.to(items, {
+          y: 0,
+          autoAlpha: 1,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: numberedListContainer,
+            start: "top 85%",
+            once: true,
+          },
+        });
+      }
+    }
+
+    window.addEventListener("load", () => ScrollTrigger.refresh());
+  }
+</script>
+
+<style>
+  .box:not(:last-child) {
+    margin-bottom: 1.5rem;
+
+    @media screen and (max-width: 768px) {
+      margin-bottom: 1rem;
+    }
+
+    @media screen and (max-width: 576px) {
+      margin-bottom: 0.75rem;
+    }
+  }
+</style>

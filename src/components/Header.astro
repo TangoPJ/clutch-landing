@@ -1,0 +1,186 @@
+---
+import ClutchLogo from "../assets/clutch-logo.svg";
+import Button from "./shared/Button.astro";
+import { Image as AstroImage } from "astro:assets";
+---
+
+<header class="header">
+  <nav class="header-nav">
+    <AstroImage class="logo" src={ClutchLogo} alt="Clutch" />
+    <Button> Contact </Button>
+  </nav>
+  <div class="header-content">
+    <h1 class="header-content-title">
+      Effortless road trips: we plan, you explore.
+    </h1>
+    <p class="header-content-subtitle">
+      Clutch takes the hassle out of planning your dream road trips, whether
+      it’s a<br />once-in-a-lifetime adventure or a spontaneous weekend escape.
+    </p>
+    <p class="header-content-description">
+      We handle all the details, from routes to stays,<br />so you can focus
+      100% on the open road.
+    </p>
+    <div class="header-content-form">
+      <input class="header-content-form-input" placeholder="Enter your email" />
+      <Button class="header-content-form-button"> Join the Club </Button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-image: url("../assets/background-image.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 24px;
+
+    @media screen and (max-width: 768px) {
+      padding: 28px;
+    }
+
+    @media screen and (max-width: 576px) {
+      padding: 20px;
+    }
+  }
+
+  .header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    margin: auto;
+  }
+
+  .logo {
+    @media screen and (max-width: 768px) {
+      width: 200px;
+      height: 42px;
+    }
+  }
+
+  .header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 808px;
+    width: 100%;
+    margin: 132px auto;
+    text-align: center;
+
+    @media screen and (max-width: 768px) {
+      margin: 96px auto;
+    }
+
+    @media screen and (max-width: 576px) {
+      margin: 64px auto;
+    }
+  }
+
+  .header-content-title {
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 72px;
+    margin: 0;
+    margin-bottom: 22px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 52px;
+      line-height: 58px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: 36px;
+      line-height: 42px;
+    }
+  }
+
+  .header-content-subtitle {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+    margin: 0;
+    margin-bottom: 30px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 16px;
+      margin-bottom: 22px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+  }
+
+  .header-content-description {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 28px;
+    margin: 0;
+    margin-bottom: 50px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 18px;
+      line-height: 24px;
+      margin-bottom: 36px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: 16px;
+      line-height: 22px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .header-content-subtitle br,
+  .header-content-description br {
+    @media screen and (max-width: 576px) {
+      display: none;
+    }
+  }
+
+  .header-content-form {
+    display: flex;
+    gap: 0.6rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 631px;
+    min-height: 60px;
+  }
+
+  .header-content-form-input {
+    padding: 0 25px;
+    border: none;
+    border-radius: 50px;
+    color: #221f1b;
+    background-color: #fff;
+    width: 100%;
+    flex: 1;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 400;
+    min-height: 60px;
+    height: 100%;
+
+    @media screen and (max-width: 576px) {
+      width: 100%;
+      max-width: 100%;
+      min-height: 56px;
+    }
+  }
+
+  .header-content-form-button {
+    white-space: nowrap;
+    min-height: 60px;
+
+    @media screen and (max-width: 576px) {
+      width: 100%;
+      min-height: 56px;
+    }
+  }
+</style>

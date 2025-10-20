@@ -1,0 +1,42 @@
+---
+const {
+  class: className,
+  style,
+  type = "button",
+  ...attrs
+} = Astro.props as Record<string, any>;
+---
+
+<button class:list={["button", className]} style={style} type={type} {...attrs}>
+  <slot />
+</button>
+
+<style>
+  .button {
+    padding: 14px 22px;
+    background-color: #ed705a;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: #e05c4a;
+    }
+
+    @media screen and (max-width: 768px) {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 12px 20px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: 14px;
+      line-height: 16px;
+      padding: 12px 18px;
+    }
+  }
+</style>

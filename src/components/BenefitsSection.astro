@@ -1,0 +1,142 @@
+---
+import { Image as AstroImage } from "astro:assets";
+import BenefitCard from "./shared/BenefitCard.astro";
+import MapIcon from "../assets/benefitCardIcons/map.svg";
+import PinMapIcon from "../assets/benefitCardIcons/pin-map.svg";
+import StartTicketIcon from "../assets/benefitCardIcons/start-ticket.svg";
+import UserIcon from "../assets/benefitCardIcons/user.svg";
+import lineOne from "../assets/line1.svg";
+import lineTwo from "../assets/line2.svg";
+
+const benefitCards = [
+  {
+    id: 1,
+    src: MapIcon,
+    alt: "Map",
+    title: "Route Creation",
+    description:
+      "Create and plan your ideal road trip based on your interests and budget. Customise your itinerary and get recommendations for places to visit or events to attend along the way.",
+  },
+  {
+    id: 2,
+    src: PinMapIcon,
+    alt: "Pin Map",
+    title: "Featured Routes",
+    description:
+      "Explore curated travel itineraries for unforgettable journeys, blending scenic vistas and cultural landmarks to inspire your next adventure.",
+  },
+  {
+    id: 3,
+    src: StartTicketIcon,
+    alt: "Start Ticket",
+    title: "Explore Events",
+    description:
+      "Discover a library of automotive events happening nearby and beyond. Uncover some you never knew even existed, from local car meets to major motor shows. Clutch has you covered.",
+  },
+  {
+    id: 4,
+    src: UserIcon,
+    alt: "User",
+    title: "Community",
+    description:
+      "Connect with like minded enthusiasts, friends and family through the dedicated community section. Keep up-to-date with what they are doing and collaborate on new adventures together.",
+  },
+];
+---
+
+<section class="benefits-section">
+  <AstroImage
+    class="line line-one"
+    src={lineOne}
+    alt="Line One"
+    aria-hidden="true"
+  />
+  <AstroImage
+    class="line line-two"
+    src={lineTwo}
+    alt="Line Two"
+    aria-hidden="true"
+  />
+  <div class="benefits-section-container">
+    <h2 class="benefits-section-title">The benefits of Clutch</h2>
+    <div class="benefit-cards-container">
+      {
+        benefitCards.map(({ id, src, alt, title, description }) => (
+          <BenefitCard
+            key={id}
+            src={src}
+            alt={alt}
+            title={title}
+            description={description}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .benefits-section {
+    background-color: #1d757d;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .line {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .line-one {
+    top: -87px;
+    left: -120px;
+  }
+
+  .line-two {
+    right: 0;
+    bottom: -14px;
+  }
+
+  .benefits-section-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-block: 24px;
+  }
+
+  .benefits-section-title {
+    font-weight: 700;
+    font-size: 70px;
+    line-height: 72px;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 52px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 48px;
+      line-height: 56px;
+      margin-bottom: 36px;
+    }
+
+    @media screen and (max-width: 576px) {
+      font-size: 28px;
+      line-height: 34px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .benefit-cards-container {
+    display: grid;
+    gap: 1rem;
+
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (min-width: 675px) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

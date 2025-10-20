@@ -1,0 +1,41 @@
+---
+import { Image as AstroImage } from "astro:assets";
+const { href, icon, alt } = Astro.props;
+---
+
+<a href={href} class="link" target="_blank">
+  <AstroImage src={icon} alt={alt} class="icon" />
+</a>
+
+<style>
+  .link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    min-height: 52px;
+    background-color: #fff;
+    border-radius: 100%;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      background-color: #ed705a;
+      transition: all 0.3s ease-in-out;
+
+      & .icon {
+        filter: brightness(0) invert(1);
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  }
+
+  .icon {
+    width: 26px;
+    height: 26px;
+    transition: all 0.3s ease-in-out;
+    filter: brightness(0) saturate(100%) invert(48%) sepia(80%) saturate(440%)
+      hue-rotate(330deg) brightness(97%) contrast(91%);
+  }
+</style>

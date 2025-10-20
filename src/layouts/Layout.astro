@@ -1,22 +1,59 @@
+---
+import { AstroFont } from "astro-font";
+import { ClientRouter } from "astro:transitions";
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Clutch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <AstroFont
+      config={[
+        {
+          src: [],
+          name: "Noto Serif",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400;1,700&display=swap",
+          preload: true,
+          display: "swap",
+          selector: "html",
+          fallback: "serif",
+        },
+        {
+          src: [],
+          name: "Inter",
+          googleFontsURL:
+            "https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;1,400;1,700&display=swap",
+          preload: true,
+          display: "swap",
+          selector: "html",
+          fallback: "sans-serif",
+        },
+      ]}
+    />
+    <ClientRouter />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:
+      "Noto Serif", Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 16px;
+    color: #fff;
+    background-color: #fffff2;
+  }
 </style>

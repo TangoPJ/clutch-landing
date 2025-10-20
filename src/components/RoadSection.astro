@@ -1,0 +1,73 @@
+<section class="road-section">
+  <div class="road-section-content">
+    <h2 class="road-section-title">Clutch: the open road starts here</h2>
+    <p class="road-section-description">
+      Ready to discover that next adventure? We're building an app to help you
+      find it. Sign up for updates and be the first to know when Clutch
+      launches, and hit those unforgettable roads.
+    </p>
+  </div>
+</section>
+
+<style>
+  .road-section {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../assets/road.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .road-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(32, 29, 26, 0.7) 0%,
+      rgba(32, 29, 26, 0.6) 30%,
+      rgba(32, 29, 26, 0.4) 55%,
+      rgba(32, 29, 26, 0.2) 70%,
+      rgba(32, 29, 26, 0) 90%
+    );
+  }
+
+  .road-section-content {
+    max-width: 680px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    @media screen and (max-width: 768px) {
+      padding: 80px 40px;
+    }
+    @media screen and (max-width: 576px) {
+      padding: 60px 20px;
+    }
+  }
+
+  .road-section-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(32px, 8vw, 70px);
+    line-height: 1.1;
+    margin: 0;
+    margin-bottom: clamp(24px, 6vw, 52px);
+  }
+
+  .road-section-description {
+    color: #fff;
+    font-weight: 500;
+    font-size: clamp(16px, 2.2vw, 18px);
+    line-height: 150%;
+    margin: 0;
+  }
+</style>
