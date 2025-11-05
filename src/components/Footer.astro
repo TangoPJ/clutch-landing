@@ -9,10 +9,9 @@ import hyper from "../assets/hyper.svg";
 import SocialLink from "./shared/SocialLink.astro";
 
 const links = [
-  { id: 1, link: "https://facebook.com", icon: facebook, alt: "Facebook" },
-  { id: 2, link: "https://x.com", icon: twitter, alt: "Twitter" },
-  { id: 3, link: "https://linkedin.com", icon: linkedin, alt: "Linkedin" },
-  { id: 4, link: "https://instagram.com", icon: instagram, alt: "Instagram" },
+  { id: 1, link: "https://www.facebook.com/share/1JPkDrVzEz/?mibextid=wwXIfr", icon: facebook, alt: "Facebook" },
+  { id: 3, link: "https://www.linkedin.com/company/clutch-app-uk/", icon: linkedin, alt: "Linkedin" },
+  { id: 4, link: "https://www.instagram.com/clutch__app?igsh=MTFjaHJiNHk3NWY5MA%3D%3D&utm_source=qr", icon: instagram, alt: "Instagram" },
 ];
 ---
 
@@ -28,18 +27,6 @@ const links = [
         }
       </div>
     </div>
-    <div class="footer-top_right">
-      <p style="display:flex;align-items:center;gap:1rem;">
-        <span class="footer-top_right-launched-with"> Launched with </span>
-        <AstroImage src={hyper} alt="Hyper" />
-      </p>
-      <p style="color:#221F1B;font-size:12px;line-height:16px;margin:0;">
-        The best way to fund and launch your app.
-      </p>
-      <p style="color:#221F1B;font-size:12px;line-height:16px;margin:0;">
-        Celebrating $32m raised in the past 12 months.
-      </p>
-    </div>
   </div>
   <div class="divider"></div>
   <div class="footer-bottom">
@@ -53,7 +40,7 @@ const links = [
         <a href="/tos">Terms of Service</a>
       </p>
       <p class="footer-bottom_right-link">
-        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/">Privacy Policy</a>
       </p>
     </div>
   </div>
@@ -84,45 +71,12 @@ const links = [
     align-items: center;
   }
 
-  .footer-top_right {
-    font-family:
-      "Inter",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
-  }
-
-  .footer-top_right-launched-with {
-    color: #221f1b;
-    font-size: 14px;
-    line-height: 20px;
-    font-family:
-      "Inter",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
-  }
-
   .divider {
     height: 1px;
     width: 100%;
-    background-color: #221f1b;
+    background-color: #89847c;
     margin: 30px 0;
-    appearance: 10%;
+    opacity: 0.5;
   }
 
   .footer-bottom {
@@ -151,32 +105,6 @@ const links = [
       gap: 0.2rem;
       flex-direction: column;
       align-items: flex-start;
-    }
-
-    a {
-      color: #221f1b;
-      font-family:
-        "Inter",
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Roboto,
-        Oxygen,
-        Ubuntu,
-        Cantarell,
-        "Helvetica Neue",
-        Arial,
-        sans-serif;
-      font-size: 16px;
-      line-height: 34px;
-      margin: 0;
-      transition: all 0.1s ease-in-out;
-      text-decoration: none;
-
-      &:hover {
-        transition: all 0.1s ease-in-out;
-        color: #ed705a;
-      }
     }
   }
 

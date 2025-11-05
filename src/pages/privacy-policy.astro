@@ -1,32 +1,18 @@
 ---
+import Header from "../components/privacyPolicy/Header.astro";
+import Content from "../components/privacyPolicy/Content.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main>
-    <h1>Privacy Policy</h1>
-    <p>This is the privacy policy for Clutch</p>
-    <a href="/">Back to home</a>
-  </main>
+  <div class="privacy-policy">
+    <Header />
+    <Content />
+  </div>
 </Layout>
 
 <style>
-  main {
-    margin: 0 auto;
-    padding: 24px;
-    color: #221f1b;
-    text-align: center;
-  }
-  h1 {
-    font-size: 48px;
-    line-height: 56px;
-    margin-bottom: 24px;
-    color: #221f1b;
-  }
-
-  p {
-    font-size: 16px;
-    line-height: 24px;
-    color: #221f1b;
+  .privacy-policy {
+    font-family: Inter, sans-serif;
   }
 </style>
