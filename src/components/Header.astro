@@ -2,6 +2,9 @@
 import ClutchLogo from "../assets/clutch-logo.svg";
 import Button from "./shared/Button.astro";
 import { Image as AstroImage } from "astro:assets";
+import StoreDownloadButton from "./shared/StoreDownloadButton.astro";
+import { Image } from "astro:assets";
+import QrCode from "../assets/qrcode.svg";
 ---
 
 <header class="header">
@@ -21,27 +24,20 @@ import { Image as AstroImage } from "astro:assets";
       We handle all the details, from routes to stays,<br />so you can focus
       100% on the open road.
     </p>
-    <div class="header-store-links">
-      <a
-        class="store-button"
-        href="https://www.apple.com/app-store/"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Download on the App Store"
-      >
-        <span class="store-button-label">Download on the</span>
-        <span class="store-button-store">App Store</span>
-      </a>
-      <a
-        class="store-button"
-        href="https://play.google.com/store/"
-        target="_blank"
-        rel="noreferrer"
-        aria-label="Get it on Google Play"
-      >
-        <span class="store-button-label">Get it on</span>
-        <span class="store-button-store">Google Play</span>
-      </a>
+    <div class="download-box">
+      <div class="qr-wrapper">
+        <Image class="qr-image" src={QrCode} alt="QR Code" />
+      </div>
+      <div class="buttons">
+        <StoreDownloadButton
+          type="app-store"
+          href="https://www.apple.com/app-store/"
+        />
+        <StoreDownloadButton
+          type="google-play"
+          href="https://play.google.com/store/"
+        />
+      </div>
     </div>
   </div>
 </header>
@@ -168,55 +164,67 @@ import { Image as AstroImage } from "astro:assets";
     }
   }
 
-  .header-store-links {
-    display: flex;
-    gap: 0.6rem;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 631px;
-    min-height: 60px;
-  }
-
-  .store-button {
-    flex: 1;
-    min-width: 240px;
-    min-height: 60px;
-    border-radius: 16px;
-    background: rgba(255, 255, 255, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    color: #fff;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  .download-box {
+    --store-btn-height: 64px;
+    --buttons-gap: 14px;
+    display: grid;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    padding: 10px 24px;
-    transition:
-      background 0.2s ease,
-      border-color 0.2s ease;
+    gap: 30px;
+    padding: 18px 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    width: fit-content;
+    margin: 0 auto;
+
+    @media screen and (max-width: 768px) {
+      --store-btn-height: 58px;
+      gap: 16px;
+      padding: 16px;
+    }
 
     @media screen and (max-width: 576px) {
+      grid-template-columns: 1fr;
+      justify-items: center;
       width: 100%;
-      min-height: 56px;
     }
   }
 
-  .store-button:hover,
-  .store-button:focus-visible {
-    background: rgba(255, 255, 255, 0.2);
-    border-color: #fff;
+  .qr-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+
+    @media screen and (max-width: 576px) {
+      order: -1;
+    }
   }
 
-  .store-button-label {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+  .qr-image {
+    height: calc(var(--store-btn-height) * 2 + var(--buttons-gap));
+    width: auto;
+    display: block;
+
+    @media screen and (max-width: 576px) {
+      height: auto;
+      max-height: 180px;
+      width: 180px;
+    }
   }
 
-  .store-button-store {
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 24px;
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: var(--buttons-gap);
+    align-self: stretch;
+    justify-content: space-around;
+  }
+
+  .buttons :global(.store-download-button) {
+    height: var(--store-btn-height);
   }
 </style>
