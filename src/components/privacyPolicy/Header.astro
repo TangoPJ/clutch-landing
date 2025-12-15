@@ -1,3 +1,7 @@
+---
+const linkFontSize = "1rem";
+---
+
 <div class="header">
   <a href="/" class="home-link">Home</a>
   <div class="content">
@@ -8,18 +12,20 @@
   </div>
 </div>
 
-<style>
+<style define:vars={{ linkFontSize }}>
   .header {
     display: flex;
     justify-content: flex-end;
     color: #221f1b;
-    padding: 3rem 7rem;
+    padding: 1rem;
     text-align: right;
     align-items: flex-start;
   }
 
   .home-link {
     margin-right: auto;
+    font-size: var(--linkFontSize);
+    line-height: calc(var(--linkFontSize) * 1.5);
   }
 
   .content {

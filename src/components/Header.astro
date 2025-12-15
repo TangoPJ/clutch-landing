@@ -21,9 +21,27 @@ import { Image as AstroImage } from "astro:assets";
       We handle all the details, from routes to stays,<br />so you can focus
       100% on the open road.
     </p>
-    <div class="header-content-form">
-      <input class="header-content-form-input" placeholder="Enter your email" />
-      <Button class="header-content-form-button"> Join the Club </Button>
+    <div class="header-store-links">
+      <a
+        class="store-button"
+        href="https://www.apple.com/app-store/"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Download on the App Store"
+      >
+        <span class="store-button-label">Download on the</span>
+        <span class="store-button-store">App Store</span>
+      </a>
+      <a
+        class="store-button"
+        href="https://play.google.com/store/"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Get it on Google Play"
+      >
+        <span class="store-button-label">Get it on</span>
+        <span class="store-button-store">Google Play</span>
+      </a>
     </div>
   </div>
 </header>
@@ -150,7 +168,7 @@ import { Image as AstroImage } from "astro:assets";
     }
   }
 
-  .header-content-form {
+  .header-store-links {
     display: flex;
     gap: 0.6rem;
     justify-content: space-between;
@@ -160,34 +178,45 @@ import { Image as AstroImage } from "astro:assets";
     min-height: 60px;
   }
 
-  .header-content-form-input {
-    padding: 0 25px;
-    border: none;
-    border-radius: 50px;
-    color: #221f1b;
-    background-color: #fff;
-    width: 100%;
+  .store-button {
     flex: 1;
-    font-size: 16px;
-    line-height: 22px;
-    font-weight: 400;
+    min-width: 240px;
     min-height: 60px;
-    height: 100%;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 24px;
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease;
 
     @media screen and (max-width: 576px) {
       width: 100%;
-      max-width: 100%;
       min-height: 56px;
     }
   }
 
-  .header-content-form-button {
-    white-space: nowrap;
-    min-height: 60px;
+  .store-button:hover,
+  .store-button:focus-visible {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: #fff;
+  }
 
-    @media screen and (max-width: 576px) {
-      width: 100%;
-      min-height: 56px;
-    }
+  .store-button-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .store-button-store {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
   }
 </style>
